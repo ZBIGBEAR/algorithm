@@ -25,7 +25,7 @@ func (r *RotateSuite) TestRotateArrayFindSmall() {
 	expectVal := int64(1)
 	for i := 0; i < 10; i++ {
 		arr := []int64{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-		rotateArr := utils.RotateN(arr, i)
+		rotateArr := utils.RotateNByRecursion(arr, i)
 		small := RotateArrayFindSmall(rotateArr)
 		r.Equal(expectVal, small)
 	}
