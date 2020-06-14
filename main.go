@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-	TestTimeCost()
+	bTime := time.Now()
+	other.Print1ToMaxN(7)
+	fmt.Printf("%d\n", time.Now().Sub(bTime).Seconds())
 }
 
 func TestTimeCost() {
