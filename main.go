@@ -7,6 +7,28 @@ import (
 )
 
 func main() {
+	TestSplitArrByThree()
+}
+
+func TestSplitArrByOddEven() {
+	arr := []int64{4, 8, 6, 4, 3, 76, 8, 9, 77, 44, 3, 6, 4, 434, 567, 223, 668, 4348, 5, 7}
+	arr = other.SplitArr(arr, other.IsOdd)
+	fmt.Println(arr)
+}
+
+func TestSplitArrByZero() {
+	arr := []int64{4, -8, 6, 4, 3, -76, 8, -9, -77, -44, 3, 6, 4, 6, 7, -98, 3, 21, 435, 67, 23}
+	arr = other.SplitArr(arr, other.SmallTHanZero)
+	fmt.Println(arr)
+}
+
+func TestSplitArrByThree() {
+	arr := []int64{4, -8, 6, 4, 3, -76, 8, -9, -77, -44, 3, 6, 4, 6, 7, -98, 3, 21, 435, 67, 23}
+	arr = other.SplitArr(arr, other.IsDivisibleByThree)
+	fmt.Println(arr)
+}
+
+func TestPrint1ToMaxN() {
 	bTime := time.Now()
 	other.Print1ToMaxN(7)
 	fmt.Printf("%d\n", time.Now().Sub(bTime).Seconds())
