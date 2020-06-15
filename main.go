@@ -7,7 +7,40 @@ import (
 )
 
 func main() {
-	TestSplitArrByThree()
+	TestRevertListN(1)
+	TestRevertListN(2)
+	TestRevertListN(3)
+	TestRevertListN(4)
+	TestRevertListN(5)
+	TestRevertListN(6)
+}
+
+func TestRevertListN(n int) {
+	var head, p *other.Node
+	for i := 0; i < n; i++ {
+		node := &other.Node{V: int64(i)}
+		if i == 0 {
+			head = node
+			p = node
+		} else {
+			p.Next = node
+			p = node
+		}
+	}
+	TestReverseList(head)
+	fmt.Println("\n")
+}
+
+func TestReverseList(head *other.Node) {
+	p := other.RevreseList(head)
+	q := p
+	for {
+		if q == nil {
+			break
+		}
+		fmt.Print(q.V, ",")
+		q = q.Next
+	}
 }
 
 func TestSplitArrByOddEven() {
