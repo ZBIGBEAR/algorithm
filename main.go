@@ -2,17 +2,13 @@ package main
 
 import (
 	"algorithm/other"
+	"algorithm/my_stack"
 	"fmt"
 	"time"
 )
 
 func main() {
-	TestRevertListN(1)
-	TestRevertListN(2)
-	TestRevertListN(3)
-	TestRevertListN(4)
-	TestRevertListN(5)
-	TestRevertListN(6)
+	stack.NewStack()
 }
 
 func TestRevertListN(n int) {
