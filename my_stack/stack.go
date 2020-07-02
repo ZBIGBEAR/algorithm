@@ -25,13 +25,12 @@ func (s *StackElem) Pup(elem interface{}) {
 
 // 出栈
 func (s *StackElem) Pop() interface{} {
-	s.lock
+	s.lock.Lock()
+	defer s.lock.Unlock()
 	if s.top >= 0 {
-		var elem interface{}
-		copy(elem, s.elems[s.top])
+		elem := s.elems[s.top]
 		s.top--
 		return elem
 	}
 	return nil
-	defer s.lock.Unlock()
 }

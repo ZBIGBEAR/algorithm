@@ -2,13 +2,31 @@ package main
 
 import (
 	"algorithm/other"
-	"algorithm/my_stack"
+	"math/rand"
 	"fmt"
 	"time"
 )
 
 func main() {
-	stack.NewStack()
+	// arr := []int64{1,2,3,4,5,6,7}
+	// head := tree.NewBinaryTre e(arr)
+	// tree.PrintBinaryTree(head)
+	for i:=0;i<10;i++{
+		arr := createArr(i)
+		fmt.Println("origin arr:", arr)
+		arr1 := other.SplitArrByOddEven(arr)
+		fmt.Println("ordered arr:", arr1)
+		fmt.Println("======================")
+	}
+	// arr := []int64{3,2,1,5,7,9,2,4}
+}
+
+func createArr(n int) []int64 {
+	arr := make([]int64,n)
+	for i:=0;i<n;i++{
+		arr[i] = rand.Int63n(100)
+	}
+	return arr
 }
 
 func TestRevertListN(n int) {
