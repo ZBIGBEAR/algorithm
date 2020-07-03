@@ -16,7 +16,7 @@ func NewStack() *StackElem {
 }
 
 // 进栈
-func (s *StackElem) Pup(elem interface{}) {
+func (s *StackElem) Push(elem interface{}) {
 	s.lock.Lock()
 	defer s.lock.Unlock()
 	s.top++

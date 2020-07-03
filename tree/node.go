@@ -36,7 +36,8 @@ func NewBinaryTree(arr []int64) *TreeNode {
 	idx := 1
 	for {
 		// 出栈
-		popNode := stack.Pop()
+		elem := stack.Pop()
+		popNode := elem.(*TreeNode)
 		// 从数组中取出2个元素，分别作为刚出栈节点的左右孩子
 		popNode.lChild = &TreeNode{
 			val: arr[idx],
@@ -67,9 +68,9 @@ func PrintBinaryTree(head *TreeNode) {
 	if head == nil {
 		return
 	}
-	fmt.Print(head.val, "\n")
+	fmt.Print(head.val, "\t")
 	PrintBinaryTree(head.lChild)
-	PrintBinaryTree(headl.rChild)
+	PrintBinaryTree(head.rChild)
 }
 
 // 非递归输出二叉树的前序遍历

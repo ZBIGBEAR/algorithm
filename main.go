@@ -3,22 +3,24 @@ package main
 import (
 	"algorithm/other"
 	"math/rand"
+	"algorithm/tree"
 	"fmt"
 	"time"
 )
 
 func main() {
-	// arr := []int64{1,2,3,4,5,6,7}
-	// head := tree.NewBinaryTre e(arr)
-	// tree.PrintBinaryTree(head)
-	for i:=0;i<10;i++{
-		arr := createArr(i)
-		fmt.Println("origin arr:", arr)
-		arr1 := other.SplitArrByOddEven(arr)
-		fmt.Println("ordered arr:", arr1)
-		fmt.Println("======================")
+	arr1 := []int64{1,2,3,4,5,6,7,4,3}
+	head1 := tree.NewBinaryTree(arr1)
+	
+	arr2 := []int64{2,4,5}
+	head2 := tree.NewBinaryTree(arr2)
+
+	if (tree.IsSubTree(head1, head2)) {
+		fmt.Println("是子树")
+	}else{
+		fmt.Println("不是子树")
 	}
-	// arr := []int64{3,2,1,5,7,9,2,4}
+	
 }
 
 func createArr(n int) []int64 {
