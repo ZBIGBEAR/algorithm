@@ -1,7 +1,7 @@
 package tree
 
 import (
-	myStack "algorithm/my_stack"
+	myQueue "algorithm/my_queue"
 	"fmt"
 )
 
@@ -30,33 +30,36 @@ func NewBinaryTree(arr []int64) *TreeNode {
 	count := len(arr)
 
 	// 定义一个栈
-	stack := myStack.NewStack()
-	// 第一个节点进栈
-	stack.Push(head)
+	queue := myQueue.NewQueue()
+	// 第一个节点进队列
+	queue.In(head)
 	idx := 1
 	for {
-		// 出栈
-		elem := stack.Pop()
-		popNode := elem.(*TreeNode)
+		// 出队列
+		elem := queue.Out()
+		popNode, ok := elem.(*TreeNode)
+		if !ok {
+			break
+		}
 		// 从数组中取出2个元素，分别作为刚出栈节点的左右孩子
 		popNode.lChild = &TreeNode{
 			val: arr[idx],
 		}
-		idx += 1
+		idx++
 		if idx >= count {
 			break
 		}
 		popNode.rChild = &TreeNode{
 			val: arr[idx],
 		}
-		idx += 1
+		idx++
 		if idx >= count {
 			break
 		}
 
 		// 左右孩子入栈
-		stack.Push(popNode.lChild)
-		stack.Push(popNode.rChild)
+		queue.In(popNode.lChild)
+		queue.In(popNode.rChild)
 	}
 
 	// 返回二叉树根节点

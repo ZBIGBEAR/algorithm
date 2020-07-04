@@ -8,12 +8,7 @@ func IsSubTree(dst *TreeNode, src *TreeNode) bool {
 	}
 
 	if dst == nil {
-		// 空树是空树的子树
-		if src == nil {
-			return true
-		}else{
-			return false
-		}
+		return false
 	}
 
 	if dst.val == src.val {
@@ -30,11 +25,7 @@ func IsSubTreeWithHead(dst *TreeNode, src *TreeNode) bool {
 		return true
 	}
 	if dst == nil {
-		if src == nil {
-			return true
-		}else{
-			return false
-		}
+		return false
 	}
 
 	if dst.val != src.val {

@@ -11,8 +11,9 @@ import (
 func main() {
 	arr1 := []int64{1,2,3,4,5,6,7,4,3}
 	head1 := tree.NewBinaryTree(arr1)
+	//tree.PrintBinaryTree(head1)
 	
-	arr2 := []int64{2,4,5}
+	arr2 := []int64{4,4,3}
 	head2 := tree.NewBinaryTree(arr2)
 
 	if (tree.IsSubTree(head1, head2)) {
