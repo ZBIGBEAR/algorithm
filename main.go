@@ -2,31 +2,44 @@ package main
 
 import (
 	"algorithm/other"
-	"math/rand"
-	"algorithm/tree"
 	"fmt"
+	"math/rand"
 	"time"
 )
 
 func main() {
-	arr1 := []int64{1,2,3,4,5,6,7,4,3}
-	head1 := tree.NewBinaryTree(arr1)
-	//tree.PrintBinaryTree(head1)
-	
-	arr2 := []int64{4,4,3}
-	head2 := tree.NewBinaryTree(arr2)
+	arr := createMatrix(5)
+	PrintMatrix(arr)
+	fmt.Println()
+	other.PrintRorateMatrix(arr)
+}
 
-	if (tree.IsSubTree(head1, head2)) {
-		fmt.Println("是子树")
-	}else{
-		fmt.Println("不是子树")
+// 创建一个二维数组
+func createMatrix(n int) [][]int64{
+	rand.Seed(time.Now().UnixNano())
+	arr := make([][]int64, n)
+	for i := 0; i < n; i++ {
+		arr[i] = make([]int64, n)
+		for j := 0; j < n; j++ {
+			arr[i][j] = rand.Int63n(100)
+		}
 	}
-	
+	return arr
+}
+
+// 输出二维数组
+func PrintMatrix(arr [][]int64) {
+	for i := 0; i < len(arr); i++ {
+		for j := 0; j < len(arr[i]); j++ {
+			fmt.Printf("%d\t", arr[i][j])
+		}
+		fmt.Println()
+	}
 }
 
 func createArr(n int) []int64 {
-	arr := make([]int64,n)
-	for i:=0;i<n;i++{
+	arr := make([]int64, n)
+	for i := 0; i < n; i++ {
 		arr[i] = rand.Int63n(100)
 	}
 	return arr
