@@ -39,6 +39,17 @@ func (s *MyStack) Pop() interface{} {
 	return nil
 }
 
+func (s *MyStack) Top() interface{} {
+	if s.top < 0 {
+		return nil
+	}
+	return s.elems[s.top]
+}
+
+func (s *MyStack) IsEmpty() bool {
+	return s.top == -1
+}
+
 // 扩容
 func (s *MyStack) extendElems() {
 	// s.lock.Lock()

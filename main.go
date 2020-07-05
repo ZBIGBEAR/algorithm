@@ -2,20 +2,64 @@ package main
 
 import (
 	"algorithm/other"
+	"algorithm/tree"
 	"fmt"
 	"math/rand"
 	"time"
 )
 
 func main() {
-	arr := createMatrix(5)
-	PrintMatrix(arr)
+	TestBinaryTree()
+}
+
+func TestBinaryTree() {
+	for i := 0; i < 10; i++ {
+		arr := createArr(i)
+		TestBinaryTreeByArr(arr)
+		fmt.Println("================================")
+	}
+}
+
+func TestBinaryTreeByArr(arr []int64) {
+	fmt.Printf("输出数组:\t")
+	fmt.Println(arr)
+	head := tree.NewBinaryTree(arr)
+
+	fmt.Printf("递归前序遍历:\t")
+	tree.PreOrderTraverseBinaryTree(head)
 	fmt.Println()
-	other.PrintRorateMatrix(arr)
+
+	fmt.Printf("方法一：循环遍历前序:\t")
+	tree.PreOrderTraverseBinaryTreeWithLoop1(head)
+	fmt.Println()
+
+	fmt.Printf("方法二：循环遍历前序:\t")
+	tree.PreOrderTraverseBinaryTreeWithLoop2(head)
+	fmt.Println()
+
+	fmt.Printf("递归中序遍历：\t")
+	tree.MidOrderTraverseBinaryTree(head)
+	fmt.Println()
+
+	fmt.Printf("循环中序遍历：\t")
+	tree.MidOrderTraverseBinaryTreeWithLoop(head)
+	fmt.Println()
+
+	fmt.Printf("递归后续遍历：\t")
+	tree.PostOrderTraverseBinaryTree(head)
+	fmt.Println()
+
+	fmt.Printf("循环后续遍历 方法一：\t")
+	tree.PostOrderTraverseBinaryTreeWithLoop1(head)
+	fmt.Println()
+
+	fmt.Printf("循环后续遍历 方法二：\t")
+	tree.PostOrderTraverseBinaryTreeWithLoop2(head)
+	fmt.Println()
 }
 
 // 创建一个二维数组
-func createMatrix(n int) [][]int64{
+func createMatrix(n int) [][]int64 {
 	rand.Seed(time.Now().UnixNano())
 	arr := make([][]int64, n)
 	for i := 0; i < n; i++ {
@@ -38,6 +82,7 @@ func PrintMatrix(arr [][]int64) {
 }
 
 func createArr(n int) []int64 {
+	rand.Seed(time.Now().UnixNano())
 	arr := make([]int64, n)
 	for i := 0; i < n; i++ {
 		arr[i] = rand.Int63n(100)
