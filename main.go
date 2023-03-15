@@ -1,6 +1,7 @@
 package main
 
 import (
+	"algorithm/dijkstra"
 	"algorithm/other"
 	"algorithm/tree"
 	"fmt"
@@ -8,8 +9,29 @@ import (
 	"time"
 )
 
+const (
+	Max = 1 << 10
+)
+
 func main() {
-	TestBinaryTree()
+	points := []int{1, 2, 3, 4, 5, 6}
+	edges := [][]int{
+		{},
+		{Max, Max, 10, Max, Max, Max, 3},
+		{Max, Max, Max, 7, 5, Max, Max},
+		{Max, Max, Max, Max, Max, Max, Max},
+		{Max, 3, Max, Max, Max, 7, Max},
+		{Max, Max, Max, Max, Max, Max, Max},
+		{Max, Max, 2, Max, 6, 1, Max},
+	}
+	start := 1
+	result := dijkstra.Dijkstra(points, edges, start)
+	for i := range points {
+		if points[i] == start {
+			continue
+		}
+		fmt.Printf("节点:%d 到节点:%d 的最短距离是:%d\n", start, points[i], result[points[i]])
+	}
 }
 
 func TestBinaryTree() {
